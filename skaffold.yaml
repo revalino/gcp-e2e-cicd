@@ -1,10 +1,8 @@
-apiVersion: skaffold/v2beta16
+apiVersion: skaffold/v2beta27
 kind: Config
 metadata:
-  name: hello-world-python
+  name: gcp-e-e-cicd
 build:
-  local: 
-    push: false
   artifacts:
   - image: hello-world-python
     context: app
@@ -12,21 +10,21 @@ build:
       dockerfile: Dockerfile
 deploy:
   kustomize:
-    paths: 
-      - k8s/overlays/dev
-portForward:
-- resourceType: deployment
-  resourceName: hello-world-python
-  port: 8080 
-  localPort: 8080
+    paths:
+    - k8s/overlays/dev
 profiles:
-  - name: staging
-    deploy:
-      kustomize:
-        paths: 
-          - k8s/overlays/staging
-  - name: prod
-    deploy:
-      kustomize:
-        paths: 
-          - k8s/overlays/prod
+- name: base
+  deploy:
+    kustomize:
+      paths:
+      - k8s/base
+- name: prod
+  deploy:
+    kustomize:
+      paths:
+      - k8s/overlays/prod
+- name: staging
+  deploy:
+    kustomize:
+      paths:
+      - k8s/overlays/staging
