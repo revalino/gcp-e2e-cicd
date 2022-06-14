@@ -3,13 +3,13 @@
 export PROJECT_ID=$(gcloud config list --format 'value(core.project)')
 
 export CLUSTER_ZONE=europe-west1-b
-export VPC=vpc-cloud-deploy-techub
-export SUBNET=subnet-cloud-deploy-eu
+export VPC=default
+export SUBNET=default
 
 # Test cluster
 echo "creating testcluster..."
 gcloud container clusters create testcluster \
-	--project=${PROJECT_ID}  \
+	--project=techub-demos-host  \
 	--zone=${CLUSTER_ZONE} \
 	--network=${VPC} \
 	--subnetwork=${SUBNET} \
