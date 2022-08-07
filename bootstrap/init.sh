@@ -14,7 +14,7 @@ gcloud services enable \
 	cloudresourcemanager.googleapis.com
 
 # creates the Artifact Registry repo
-gcloud artifacts repositories create hello-world-python \
+gcloud artifacts repositories create repo-techub-python \
 	--location=europe-west1 \
 	--repository-format=docker
 

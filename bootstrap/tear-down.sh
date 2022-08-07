@@ -14,7 +14,7 @@ echo "Deleting prodcluster..."
 gcloud container clusters delete prodcluster --zone europe-west1-b --async
 
 # Delete artifact registry
-gcloud artifacts repositories delete hello-world-python --location=europe-west1 
+gcloud artifacts repositories delete repo-techub-python --location=europe-west1 
 
 # Delete deploy pipeline
 gcloud deploy delete \
