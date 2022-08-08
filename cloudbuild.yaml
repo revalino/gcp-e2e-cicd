@@ -21,7 +21,7 @@ steps:
     secretEnv: ['SONAR_TOKEN','SONAR_ORG','SONAR_PROJECT_KEY']
   # Push docker image and save image digest for kritis check
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'europe-west1-docker.pkg.dev/$PROJECT_ID/repo-techub-python/hello-world-python']
+    args: ['push', 'europe-west1-docker.pkg.dev/$PROJECT_ID/repo-techub-python/hello-world-python:${SHORT_SHA}']
     id: push
   # Create release in Google Cloud Deploy
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
